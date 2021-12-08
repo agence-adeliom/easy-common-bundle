@@ -50,14 +50,14 @@
             </div>
         </div>
         {% else %}
-            {% for field in form|filter(field => 'hidden' not in field.vars.block_prefixes and field.vars.ea_crud_form.form_panel == panel_name) %}
+            {% for field in form|filter(field => 'hidden' not in field.vars.block_prefixes and field.vars.ea_crud_form.form_panel == panel_name and not field.vars.ea_crud_form.form_tab) %}
                 {% if not field.vars.ea_crud_form.form_tab or field.vars.ea_crud_form.form_tab == tab_name %}
                     {{ form_row(field) }}
                 {% endif %}
             {% endfor %}
         {% endif %}
     {% else %}
-        {% for field in form|filter(field => 'hidden' not in field.vars.block_prefixes and (not field.vars.ea_crud_form.form_tab or field.vars.ea_crud_form.form_tab == tab_name)) %}
+        {% for field in form|filter(field => 'hidden' not in field.vars.block_prefixes  and not field.vars.ea_crud_form.form_tab) %}
             {{ form_row(field) }}
         {% endfor %}
     {% endfor %}
