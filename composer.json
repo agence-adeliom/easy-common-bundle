@@ -30,7 +30,7 @@
         "symfony/property-access": "^4.4 || ^5.2",
         "symfony/serializer": "^4.4 || ^5.2",
         "symfony/expression-language": "^4.4 || ^5.2",
-        "easycorp/easyadmin-bundle": "^3.4",
+        "easycorp/easyadmin-bundle": "^3.4 || ^v4.0.0",
         "stof/doctrine-extensions-bundle": "^1.5"
     },
     "autoload": {
