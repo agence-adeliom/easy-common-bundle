@@ -23,7 +23,7 @@ trait EntityNameSlugTrait
     /**
      * @var string|null
      * @Groups("main")
-     * @Gedmo\Slug(fields={"name"})
+     * @Gedmo\Slug(fields={"name"}, updatable=false)
      *
      * @ORM\Column(length=100, unique=true)
      */
