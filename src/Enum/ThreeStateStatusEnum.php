@@ -2,7 +2,6 @@
 
 namespace Adeliom\EasyCommonBundle\Enum;
 
-
 use Adeliom\EasyCommonBundle\Helper\Enum;
 
 /**

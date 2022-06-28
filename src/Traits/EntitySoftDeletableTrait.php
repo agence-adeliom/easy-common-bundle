@@ -6,14 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntitySoftDeletableTrait
 {
-    /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $deletedAt;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $deletedAt;
 
-    public function getDeletedAt(): ?\DateTime
+    public function getDeletedAt(): ?\DateTimeInterface
     {
         return $this->deletedAt;
     }
@@ -23,7 +19,7 @@ trait EntitySoftDeletableTrait
         return $this->deletedAt instanceof \DateTimeInterface;
     }
 
-    public function recover()
+    public function recover(): void
     {
         $this->deletedAt = null;
     }

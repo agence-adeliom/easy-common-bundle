@@ -7,16 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-
 trait EntityThreeStateStatusTrait
 {
-    /**
-     * @var string|null
-     * @Groups("main")
-     * @ORM\Column(length=100)
-     * @Assert\NotBlank
-     */
-    private $state;
+    #[Groups('main')]
+    #[Assert\NotBlank]
+    #[ORM\Column(length: 100)]
+    private string $state;
 
     /**
      * EntityThreeStateStatusTrait constructor.
