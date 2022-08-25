@@ -2,10 +2,9 @@
 
 namespace Adeliom\EasyCommonBundle\Traits;
 
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityNameTrait
 {
@@ -13,7 +12,7 @@ trait EntityNameTrait
     #[Assert\NotBlank]
     #[Assert\Length(max: 100)]
     #[ORM\Column(length: 100)]
-    private ?string $name;
+    private ?string $name = null;
 
     public function __toString(): string
     {

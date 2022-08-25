@@ -2,9 +2,9 @@
 
 namespace Adeliom\EasyCommonBundle;
 
+use Adeliom\EasyCommonBundle\DependencyInjection\EasyCommonExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Adeliom\EasyCommonBundle\DependencyInjection\EasyCommonExtension;
 
 class EasyCommonBundle extends Bundle
 {

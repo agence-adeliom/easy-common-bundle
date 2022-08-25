@@ -12,7 +12,18 @@ use Adeliom\EasyCommonBundle\Helper\Enum;
  */
 final class ThreeStateStatusEnum extends Enum
 {
+    /**
+     * @var string
+     */
     private const UNPUBLISHED = 'unpublished';
+
+    /**
+     * @var string
+     */
     private const PENDING = 'pending';
+
+    /**
+     * @var string
+     */
     private const PUBLISHED = 'published';
 }

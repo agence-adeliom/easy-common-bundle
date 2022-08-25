@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait EntitySoftDeletableTrait
 {
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private ?\DateTimeInterface $deletedAt;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $deletedAt = null;
 
     public function getDeletedAt(): ?\DateTimeInterface
     {

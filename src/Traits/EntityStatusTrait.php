@@ -2,14 +2,13 @@
 
 namespace Adeliom\EasyCommonBundle\Traits;
 
-use Adeliom\EasyCommonBundle\Enum\ThreeStateStatusEnum;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityStatusTrait
 {
     #[Assert\Valid]
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
     private bool $status = false;
 
     public function getStatus(): bool
@@ -21,5 +20,4 @@ trait EntityStatusTrait
     {
         $this->status = $status;
     }
-
 }
