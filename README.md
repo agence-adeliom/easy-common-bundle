@@ -12,6 +12,12 @@ Provide base utilities for Easyadmin.
 - A Enum polyfill for PHP 8 (< 8.1.0)
 - Some Traits for entities
 
+## Versions
+
+| Repository Branch | Version | Symfony Compatibility | PHP Compatibility | Status                     |
+|-------------------|---------|-----------------------|-------------------|----------------------------|
+| `2.x`             | `2.x`   | `5.4`, and `6.x`      | `8.0.2` or higher | New features and bug fixes |
+| `1.x`             | `1.x`   | `4.4`, and `5.x`      | `7.2.5` or higher | No longer maintained       |
 
 ## Installation
 
