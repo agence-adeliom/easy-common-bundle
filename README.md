@@ -9,7 +9,7 @@ Provide base utilities for Easyadmin.
 
 ## Features
 
-- A Enum polyfill for PHP
+- A Enum polyfill for PHP 8 (< 8.1.0)
 - Some Traits for entities
 
 
