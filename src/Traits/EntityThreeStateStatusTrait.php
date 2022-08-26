@@ -4,19 +4,15 @@ namespace Adeliom\EasyCommonBundle\Traits;
 
 use Adeliom\EasyCommonBundle\Enum\ThreeStateStatusEnum;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityThreeStateStatusTrait
 {
-    /**
-     * @var string|null
-     * @Groups("main")
-     * @ORM\Column(length=100)
-     * @Assert\NotBlank
-     */
-    private $state;
+    #[Groups('main')]
+    #[Assert\NotBlank]
+    #[ORM\Column(length: 100)]
+    private string $state;
 
     /**
      * EntityThreeStateStatusTrait constructor.
@@ -33,9 +29,10 @@ trait EntityThreeStateStatusTrait
 
     public function setState(?string $state): void
     {
-        if($state){
+        if ($state) {
             ThreeStateStatusEnum::assertValidValue($state);
         }
+
         $this->state = $state;
     }
 
@@ -43,5 +40,4 @@ trait EntityThreeStateStatusTrait
     {
         return $this->state == ThreeStateStatusEnum::search($state);
     }
-
 }

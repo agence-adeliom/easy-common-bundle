@@ -2,15 +2,13 @@
 
 namespace Adeliom\EasyCommonBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Adeliom\EasyCommonBundle\DependencyInjection\EasyCommonExtension;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class EasyCommonBundle extends Bundle
 {
-    /**
-     * @return ExtensionInterface|null The container extension
-     */
-    public function getContainerExtension()
+    public function getContainerExtension(): ?ExtensionInterface
     {
         return new EasyCommonExtension();
     }

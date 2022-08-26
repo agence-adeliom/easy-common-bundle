@@ -3,30 +3,20 @@
 namespace Adeliom\EasyCommonBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityPublishableTrait
 {
-    /**
-     * @var \DateTimeInterface
-     * @Groups("main")
-     * @ORM\Column(type="datetime", name="publish_date", nullable=true)
-     * @Assert\NotBlank()
-     */
-    protected $publishDate;
+    #[Groups('main')]
+    #[Assert\NotBlank]
+    #[ORM\Column(name: 'publish_date', type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
+    protected \DateTimeInterface $publishDate;
 
-    /**
-     * @var \DateTimeInterface
-     * @Groups("main")
-     * @ORM\Column(type="datetime", name="unpublish_date", nullable=true)
-     * @Assert\Expression(
-     *     expression="this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()",
-     *     message="The unpublish date must be greater than the publish date"
-     * )
-     */
-    protected $unpublishDate;
+    #[Groups('main')]
+    #[Assert\Expression(expression: 'this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()', message: 'The unpublish date must be greater than the publish date')]
+    #[ORM\Column(name: 'unpublish_date', type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
+    protected \DateTimeInterface $unpublishDate;
 
     /**
      * PublishableTrait constructor.
@@ -36,40 +26,30 @@ trait EntityPublishableTrait
         $this->publishDate = new \DateTime();
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getPublishDate()
+    public function getPublishDate(): \DateTimeInterface
     {
         return $this->publishDate;
     }
 
     /**
-     * @param \DateTime $publishDate
-     *
      * @return $this
      */
-    public function setPublishDate(\DateTime $publishDate = null)
+    public function setPublishDate(?\DateTimeInterface $publishDate)
     {
         $this->publishDate = $publishDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTimeInterface
-     */
-    public function getUnpublishDate()
+    public function getUnpublishDate(): \DateTimeInterface
     {
         return $this->unpublishDate;
     }
 
     /**
-     * @param \DateTime|null $unpublishDate
-     *
      * @return $this
      */
-    public function setUnpublishDate(\DateTime $unpublishDate = null)
+    public function setUnpublishDate(?\DateTimeInterface $unpublishDate)
     {
         $this->unpublishDate = $unpublishDate;
 
@@ -78,8 +58,6 @@ trait EntityPublishableTrait
 
     /**
      * Defines if the content is published.
-     *
-     * @return bool
      */
     public function isPublished(): bool
     {
@@ -89,5 +67,4 @@ trait EntityPublishableTrait
             (null === $this->getUnpublishDate() && $this->getPublishDate() <= $now) ||
             ($now <= $this->getUnpublishDate() && $this->getPublishDate() <= $now);
     }
-
 }

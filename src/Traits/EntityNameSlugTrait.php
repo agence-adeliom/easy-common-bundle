@@ -2,36 +2,27 @@
 
 namespace Adeliom\EasyCommonBundle\Traits;
 
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait EntityNameSlugTrait
 {
-    /**
-     * @var string|null
-     * @Groups("main")
-     * @ORM\Column(length=100)
-     *
-     * @Assert\NotBlank
-     * @Assert\Length(max=100)
-     */
-    private $name;
+    #[Groups('main')]
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 100)]
+    #[ORM\Column(length: 100)]
+    private ?string $name = null;
 
-    /**
-     * @var string|null
-     * @Groups("main")
-     * @Gedmo\Slug(fields={"name"}, updatable=false)
-     *
-     * @ORM\Column(length=100, unique=true)
-     */
-    private $slug;
+    #[Groups('main')]
+    #[ORM\Column(length: 100, unique: true)]
+    #[Gedmo\Slug(fields: ['name'], updatable: false)]
+    private ?string $slug = null;
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->name ?: "";
+        return $this->name ?: '';
     }
 
     public function getName(): ?string
