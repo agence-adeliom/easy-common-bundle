@@ -11,12 +11,12 @@ trait EntityPublishableTrait
     #[Groups('main')]
     #[Assert\NotBlank]
     #[ORM\Column(name: 'publish_date', type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
-    protected \DateTimeInterface $publishDate;
+    protected ?\DateTimeInterface $publishDate;
 
     #[Groups('main')]
     #[Assert\Expression(expression: 'this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()', message: 'The unpublish date must be greater than the publish date')]
     #[ORM\Column(name: 'unpublish_date', type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
-    protected \DateTimeInterface $unpublishDate;
+    protected ?\DateTimeInterface $unpublishDate;
 
     /**
      * PublishableTrait constructor.
@@ -41,7 +41,7 @@ trait EntityPublishableTrait
         return $this;
     }
 
-    public function getUnpublishDate(): \DateTimeInterface
+    public function getUnpublishDate(): ?\DateTimeInterface
     {
         return $this->unpublishDate;
     }
