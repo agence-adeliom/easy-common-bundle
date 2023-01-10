@@ -28,11 +28,11 @@
                                 {% if panel_config.icon|default(false) %}
                                     <i class="form-panel-icon {{ panel_config.icon }}"></i>
                                 {% endif %}
-                                {{ panel_config.label|raw }}
+                                {{ panel_config.label|raw|trans }}
                             </a>
 
                             {% if panel_config.help|default(false) %}
-                                <div class="form-panel-help">{{ panel_config.help|raw }}</div>
+                                <div class="form-panel-help">{{ panel_config.help|raw|trans }}</div>
                             {% endif %}
                         </div>
                     </div>
