@@ -11,12 +11,12 @@ trait EntityNameSlugTrait
 {
     #[Groups('main')]
     #[Assert\NotBlank]
-    #[Assert\Length(max: 100)]
-    #[ORM\Column(length: 100)]
+    #[Assert\Length(max: 255)]
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[Groups('main')]
-    #[ORM\Column(length: 100, unique: true)]
+    #[ORM\Column(length: 255, unique: true)]
     #[Gedmo\Slug(fields: ['name'], updatable: false)]
     private ?string $slug = null;
 
