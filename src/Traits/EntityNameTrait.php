@@ -10,8 +10,8 @@ trait EntityNameTrait
 {
     #[Groups('main')]
     #[Assert\NotBlank]
-    #[Assert\Length(max: 100)]
-    #[ORM\Column(length: 100)]
+    #[Assert\Length(max: 255)]
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     public function __toString(): string
