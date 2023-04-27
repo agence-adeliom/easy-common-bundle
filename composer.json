@@ -2,12 +2,7 @@
     "name": "agence-adeliom/easy-common-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony bundle for EasyAdmin that provide basic entity traits and a enum helper",
-    "keywords": [
-        "symfony",
-        "easyadmin",
-        "enum",
-        "helper"
-    ],
+    "keywords": ["symfony", "easyadmin", "enum", "helper"],
     "homepage": "https://github.com/agence-adeliom/easy-common-bundle",
     "license": "MIT",
     "authors": [
