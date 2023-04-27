@@ -9,10 +9,10 @@
 
         {% if fields|length %}
         <div class="{{ panel_config.css_class ?? '' }}">
-            <div class="form-panel card p-0 mb-4 overflow-visible">
+            <div class="form-panel overflow-visible">
                 {% if panel_has_header %}
-                    <div class="form-panel-header card-header shadow-none border-0 {{ collapsible ? 'collapsible' }} {{ panel_config.help|default(false) is not empty ? 'with-help' }}">
-                        <div class="form-panel-title card-title px-3">
+                    <div class="form-panel-header {{ collapsible ? 'collapsible' }} {{ panel_config.help|default(false) is not empty ? 'with-help' }}">
+                        <div class="form-panel-title">
                             <a {% if not collapsible %}
                                 href="#" class="not-collapsible fs-5 fw-normal"
                             {% else %}
@@ -38,7 +38,7 @@
                     </div>
                 {% endif %}
 
-                <div id="content-{{ panel_name }}" class="form-panel-body card-body border-top {{ not panel_has_header ? 'without-header' }} {{ collapsible ? 'collapse' }} {{ not collapsed ? 'show'}}">
+                <div id="content-{{ panel_name }}" class="form-panel-body {{ not panel_has_header ? 'without-header' }} {{ collapsible ? 'collapse' }} {{ not collapsed ? 'show'}}">
                     <div class="row">
                         {% for field in fields %}
                             {% if not field.vars.ea_crud_form.form_tab or field.vars.ea_crud_form.form_tab == tab_name %}
