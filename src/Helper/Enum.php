@@ -297,7 +297,7 @@ abstract class Enum implements \JsonSerializable, \Stringable
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->getValue();
     }
