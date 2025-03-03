@@ -17,12 +17,11 @@
         }
     ],
     "require": {
-        "php": ">=8.0.2",
-        "ext-json": "*",
-        "symfony/config": "^5.4 || ^6.0",
-        "symfony/dependency-injection": "^5.4 || ^6.0",
-        "symfony/http-kernel": "^5.4 || ^6.0",
-        "symfony/serializer": "^5.4 || ^6.0",
+        "php": ">=8.2",
+        "symfony/config": "^6.4 || ^7.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0",
+        "symfony/serializer": "^6.4 || ^7.0",
         "easycorp/easyadmin-bundle": "^3.4 || ^v4.0"
     },
     "autoload": {
