@@ -1,0 +1,6 @@
+easy:
+  enum:
+    state:
+      unpublished: Unpublished
+      pending: Pending publication
+      published: Published
