@@ -28,6 +28,11 @@ trait EntityThreeStateStatusTrait
         return $this->state;
     }
 
+    public function getStateAsString(): string
+    {
+        return $this->state->value;
+    }
+
     public function setState(ThreeStateStatusEnum $state): void
     {
         $this->state = $state;
