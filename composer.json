@@ -26,6 +26,7 @@
         "symfony/dependency-injection": "^6.4 || ^7.0",
         "symfony/http-kernel": "^6.4 || ^7.0",
         "symfony/serializer": "^6.4 || ^7.0",
+        "symfony/validator": "^6.4 || ^7.0",
         "easycorp/easyadmin-bundle": "^3.4 || ^v4.0",
         "gedmo/doctrine-extensions": "^3.0"
     },
