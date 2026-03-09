@@ -35,6 +35,11 @@
             "Adeliom\\EasyCommonBundle\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Adeliom\\EasyCommonBundle\\Tests\\": "tests/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^11.5",
         "symfony/yaml": "^6.4 || ^7.0"
