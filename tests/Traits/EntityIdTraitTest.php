@@ -3,6 +3,7 @@
 namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Traits\EntityIdTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
@@ -25,6 +26,6 @@ final class EntityIdTraitTest extends TestCase
         self::assertCount(1, $property->getAttributes(Id::class));
         self::assertCount(1, $property->getAttributes(Column::class));
         self::assertCount(1, $property->getAttributes(GeneratedValue::class));
-        self::assertSame(['main'], $property->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($property->getAttributes(Groups::class)[0]));
     }
 }

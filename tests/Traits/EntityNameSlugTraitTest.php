@@ -3,6 +3,7 @@
 namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Traits\EntityNameSlugTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use Doctrine\ORM\Mapping\Column;
 use Gedmo\Mapping\Annotation\Slug;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -29,8 +30,8 @@ final class EntityNameSlugTraitTest extends TestCase
         self::assertSame('Sample name', $entity->getName());
         self::assertSame('sample-name', $entity->getSlug());
         self::assertSame('Sample name', (string) $entity);
-        self::assertSame(['main'], $nameProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
-        self::assertSame(['main'], $slugProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($nameProperty->getAttributes(Groups::class)[0]));
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($slugProperty->getAttributes(Groups::class)[0]));
         self::assertCount(1, $nameProperty->getAttributes(NotBlank::class));
         self::assertSame(255, $nameProperty->getAttributes(Length::class)[0]->newInstance()->max);
         self::assertCount(1, $nameProperty->getAttributes(Column::class));

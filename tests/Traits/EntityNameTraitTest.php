@@ -3,6 +3,7 @@
 namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Traits\EntityNameTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -24,6 +25,6 @@ final class EntityNameTraitTest extends TestCase
 
         self::assertSame('Sample name', $entity->getName());
         self::assertSame('Sample name', (string) $entity);
-        self::assertSame(['main'], $nameProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($nameProperty->getAttributes(Groups::class)[0]));
     }
 }

@@ -6,6 +6,7 @@ namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Enum\ThreeStateStatusEnum;
 use Adeliom\EasyCommonBundle\Traits\EntityThreeStateStatusTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use Doctrine\ORM\Mapping\Column;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -32,7 +33,7 @@ final class EntityThreeStateStatusTraitTest extends TestCase
         self::assertSame(ThreeStateStatusEnum::PENDING, $entity->getState());
         self::assertTrue($entity->isState(ThreeStateStatusEnum::PENDING));
         self::assertFalse($entity->isState(ThreeStateStatusEnum::PUBLISHED));
-        self::assertSame(['main'], $stateProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($stateProperty->getAttributes(Groups::class)[0]));
         self::assertCount(1, $stateProperty->getAttributes(NotBlank::class));
         self::assertCount(1, $stateProperty->getAttributes(Column::class));
     }

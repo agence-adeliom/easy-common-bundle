@@ -3,6 +3,7 @@
 namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Traits\EntityPublishableTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -25,8 +26,8 @@ final class EntityPublishableTraitTest extends TestCase
         $entity->setUnpublishDate(new \DateTimeImmutable('+1 day'));
 
         self::assertTrue($entity->isPublished());
-        self::assertSame(['main'], $publishDateProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
-        self::assertSame(['main'], $unpublishDateProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($publishDateProperty->getAttributes(Groups::class)[0]));
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($unpublishDateProperty->getAttributes(Groups::class)[0]));
 
         $entity->setUnpublishDate(new \DateTimeImmutable('-1 hour'));
 

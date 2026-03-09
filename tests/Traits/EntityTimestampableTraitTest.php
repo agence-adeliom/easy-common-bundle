@@ -3,6 +3,7 @@
 namespace Adeliom\EasyCommonBundle\Tests\Traits;
 
 use Adeliom\EasyCommonBundle\Traits\EntityTimestampableTrait;
+use Adeliom\EasyCommonBundle\Tests\Util\SerializerGroupsAccessor;
 use Gedmo\Mapping\Annotation\Timestampable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -22,8 +23,8 @@ final class EntityTimestampableTraitTest extends TestCase
 
         self::assertInstanceOf(\DateTimeInterface::class, $entity->getCreatedAt());
         self::assertInstanceOf(\DateTimeInterface::class, $entity->getUpdatedAt());
-        self::assertSame(['main'], $createdAtProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
-        self::assertSame(['main'], $updatedAtProperty->getAttributes(Groups::class)[0]->newInstance()->getGroups());
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($createdAtProperty->getAttributes(Groups::class)[0]));
+        self::assertSame(['main'], SerializerGroupsAccessor::extract($updatedAtProperty->getAttributes(Groups::class)[0]));
         self::assertCount(1, $createdAtProperty->getAttributes(Timestampable::class));
         self::assertCount(1, $updatedAtProperty->getAttributes(Timestampable::class));
     }
