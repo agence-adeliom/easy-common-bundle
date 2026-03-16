@@ -27,8 +27,8 @@
         "symfony/http-kernel": "^6.4.12 || ^7.0",
         "symfony/serializer": "^6.4.12 || ^7.0",
         "symfony/validator": "^6.4.12 || ^7.0",
-        "easycorp/easyadmin-bundle": "^3.5.23 || ^4.10",
-        "gedmo/doctrine-extensions": "^3.10"
+        "easycorp/easyadmin-bundle": "^4.10",
+        "gedmo/doctrine-extensions": "^3.21"
     },
     "autoload": {
         "psr-4": {
